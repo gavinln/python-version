@@ -118,26 +118,20 @@ export UV_PROJECT_ENVIRONMENT=~/.cache/venv/$(basename $(pwd))
 uv venv
 ```
 
-5. Add the requests library in the project dependencies
+5. Run the project
 
 ```
-uv add requests
+uv run python py3.11.py
 ```
 
-6. Run the project
-
-```
-uv run python hello.py
-```
-
-7. Change to the parent directory
+6. Change to the parent directory
 
 ```
 cd ..
 ```
 
-8. Run the code from the parent directory
+7. Run the code from the parent directory
 
 ```
-uv run --directory py3.11 python hello.py
+uv run --directory py3.11 python py3.11.py
 ```
