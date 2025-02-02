@@ -14,6 +14,10 @@ py3_11:  ## run python 3.11 examples
 	# UV_PROJECT_ENVIRONMENT=~/.cache/venv/py3.11 uv run --directory py3.11 python units_lib.py
 	UV_PROJECT_ENVIRONMENT=~/.cache/venv/py3.11 uv run --directory py3.11 python py3.11.py
 
+.PHONY: py3_12
+py3_12:  ## run python 3.12 examples
+	UV_PROJECT_ENVIRONMENT=~/.cache/venv/py3.12 uv run --directory py3.12 python py3.12.py
+
 .PHONY: nvim
 nvim:  ## run nvim in a Python env
 	poetry run nvim

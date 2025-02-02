@@ -1,2 +1,0 @@
-[tool.pyright]
-include = ["py3.10", "py3.11"]
