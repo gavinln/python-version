@@ -18,15 +18,23 @@ py3_11:  ## run python 3.11 examples
 py3_12:  ## run python 3.12 examples
 	UV_PROJECT_ENVIRONMENT=~/.cache/venv/py3.12 uv run --directory py3.12 python py3.12.py
 
+.PHONY: py3_13
+py3_13:  ## run python 3.13 examples
+	UV_PROJECT_ENVIRONMENT=~/.cache/venv/py3.13 uv run --directory py3.13 python py3.13.py
+
 .PHONY: nvim
 nvim:  ## run nvim in a Python env
-	poetry run nvim
+	uv run -p 3.13 nvim -S Session.vim
 
 .PHONY: black
 black:  ## run black to format python code
-	poetry run black -l 79 $(SCRIPT_DIR)/notebooks/intro/*.py
+	black -l 79 $(SCRIPT_DIR)/py3.10
+	black -l 79 $(SCRIPT_DIR)/py3.11
+	black -l 79 $(SCRIPT_DIR)/py3.12
+	black -l 79 $(SCRIPT_DIR)/py3.13
 
 .PHONY: clean
 clean:
 	find . -name '.pytest_cache' -type d -exec rm -rf '{}' +
 	find . -name '__pycache__' -type d -exec rm -rf '{}' +
+	find . -name '.ruff_cache' -type d -exec rm -rf '{}' +

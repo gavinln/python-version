@@ -144,7 +144,7 @@ uv run --directory py3.11 python py3.11.py
 uv run -p 3.12 python -c "import sys; print(sys.version)"
 ```
 
-### Project for Python 3.10
+### Project for Python 3.12
 
 1. Create a project
 
@@ -174,4 +174,44 @@ uv venv
 
 ```
 uv run py3.12.py
+```
+
+## Py3.13
+
+1. Run the python interpreter
+
+```
+uv run -p 3.13 python -c "import sys; print(sys.version)"
+```
+
+### Project for Python 3.13
+
+1. Create a project
+
+```
+uv init py3.13 --name py3.13 -p 3.13
+```
+
+2. Change to the project directory
+
+```
+cd py3.13
+```
+
+3. Setup the virtual env directory
+
+```
+export UV_PROJECT_ENVIRONMENT=~/.cache/venv/$(basename $(pwd))
+```
+
+4. Create a virtual env
+
+```
+uv venv
+```
+
+5. Run the python program
+
+```
+uv run py3.13.py
 ```
