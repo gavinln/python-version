@@ -40,7 +40,9 @@ def to_baseunit(units, value, from_unit):
             from_info["label"]["singular" if value == 1 else "plural"],
         )
 
-    return to_baseunit(units, value * from_info["multiplier"], from_info["to_unit"])
+    return to_baseunit(
+        units, value * from_info["multiplier"], from_info["to_unit"]
+    )
 
 
 def main():
