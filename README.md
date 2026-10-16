@@ -138,7 +138,19 @@ uv run --directory py3.11 python py3.11.py
 
 ## Py3.12
 
-1. Run the python interpreter
+1. Install python
+
+```
+uv python install 3.12
+```
+
+2. List python versions
+
+```
+uv python list
+```
+
+3. Run the python interpreter
 
 ```
 uv run -p 3.12 python -c "import sys; print(sys.version)"
@@ -178,7 +190,19 @@ uv run py3.12.py
 
 ## Py3.13
 
-1. Run the python interpreter
+1. Install python
+
+```
+uv python install 3.13
+```
+
+2. List python versions
+
+```
+uv python list
+```
+
+3. Run the python interpreter
 
 ```
 uv run -p 3.13 python -c "import sys; print(sys.version)"
