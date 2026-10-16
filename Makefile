@@ -22,6 +22,10 @@ py3_12:  ## run python 3.12 examples
 py3_13:  ## run python 3.13 examples
 	UV_PROJECT_ENVIRONMENT=~/.cache/venv/py3.13 uv run --directory py3.13 python py3.13.py
 
+.PHONY: py3_14
+py3_14:  ## run python 3.14 examples
+	UV_PROJECT_ENVIRONMENT=~/.cache/venv/py3.14 uv run --directory py3.14 python py3.14.py
+
 .PHONY: nvim
 nvim:  ## run nvim in a Python env
 	uv run -p 3.13 nvim -S Session.vim
