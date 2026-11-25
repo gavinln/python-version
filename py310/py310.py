@@ -100,7 +100,7 @@ def zip_unequal():
 
 
 def newer_python():
-    if sys.version_info > (3, 6):
+    if sys.version_info >= (3, 11):
         return True
     return False
 

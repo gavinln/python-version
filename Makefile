@@ -5,7 +5,11 @@ SCRIPT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 help:  ## help for this Makefile
 	@grep -E '^[a-zA-Z0-9_\-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: 310 311 312 313 314
+versions-bak := 310 311 312 313 314
+
+versions := 313
+
+.PHONY: $(versions)
 
 .PHONY: py310
 py310: 310 ## run python 3.10 examples
@@ -31,6 +35,16 @@ py314: 314 ## run python 3.14 examples
 .PHONY: nvim
 nvim:  ## run nvim in a Python env
 	uv run -p 3.13 nvim -S Session.vim
+
+.PHONY: lint
+lint: ## lint files to run static check
+	$(foreach ver, $(versions), \
+		ruff check --target-version py$(ver) py$(ver)/py$(ver).py)
+
+.PHONY: fix-lint
+fix-lint: ## fix lint errors
+	$(foreach ver, $(versions), \
+		ruff check --target-version py$(ver) --fix py$(ver) py$(ver)/py$(ver).py)
 
 .PHONY: black
 black:  ## run black to format python code

@@ -6,8 +6,8 @@ import calendar
 import logging
 import pathlib
 import sys
+from collections.abc import Sequence
 from itertools import batched
-from typing import Sequence
 
 from accounts import BankAccount, SavingsAccount
 
@@ -90,9 +90,9 @@ def itertools_batched():
 
 def path_walk():
     for path, directories, files in pathlib.Path.cwd().walk():
-        if any(part.startswith(".") for part in path.parts):
-            continue
-        elif any(part.startswith("_") for part in path.parts):
+        if any(part.startswith(".") for part in path.parts) or any(
+            part.startswith("_") for part in path.parts
+        ):
             continue
         print(path, directories, files)
 

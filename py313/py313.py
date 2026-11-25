@@ -2,18 +2,15 @@
 https://realpython.com/python313-new-features/
 """
 
+import copy
+import dataclasses
+import datetime
 import logging
 import pathlib
-import copy
 import sys
 from collections import deque
-
-import dataclasses
-
-from datetime import date
-
-from typing import reveal_type
-from typing import NamedTuple
+from typing import NamedTuple, reveal_type
+from zoneinfo import ZoneInfo
 
 SCRIPT_DIR = pathlib.Path(__file__).parent.resolve()
 log = logging.getLogger(__name__)
@@ -86,11 +83,12 @@ def main():
     person2 = copy.replace(person, version="3.13")
     print(person2)
 
-    date1 = date.today()
-    print(f"{date1=}")
+    tz = ZoneInfo("America/Los_Angeles")
+    dt1 = datetime.datetime.now(tz)
+    print(f"dt1={dt1.isoformat()}")
 
-    date2 = date1.replace(month=3, day=3)
-    print(f"{date2=}")
+    dt2 = dt1.replace(month=3, day=3)
+    print(f"dt2={dt2.isoformat()}")
 
     person3 = Person2(name="Geir Arne", place="Oslo", version="3.12")
     print(person3)
